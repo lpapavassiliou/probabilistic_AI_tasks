@@ -1,1 +1,9 @@
 # PAI_Task_04
+
+Task description available in the file "Task4.pdf".
+
+In this Task, we implemented an actor critic model following the Generalized Advantage Estimation paper. In particular, we first implemented the multi layer perceptron structure, by passing a list with all full connected layers and activation functions to nn.Sequential.
+Then, we implemented the functions of the Actor class. In particular, "_distribution" by exponentiating the output of the Actor network and converting it to a PyTorch distribution; "_log_prob_from_distribution" using the log_prob method of the PyTorch distribution class; and "forward" utilizing the two functions previously described.
+We implemented the "store" and "end_traj" methods of the VPGBuffer class. In particular, we calculated the TD residuals-to-go and the discounted rewards-to-go in the "end_traj" method.
+As critic and actor networks architecture we chose 128 hidden unit per hidden layer and 3 hidden layers per network. We implemented the "step" method. Firstly, we sampled an action by forwarding the observation through the actor network to get an actions distribution and sampling from it. Next, we got the value by forwarding the observation through the critic netwrok, and finally we used to sampled action to get a log probability of the action itself using the actor network.
+Finally, we implemented the train function and in particular the gradient descent methods. To do so, we used the values from the VPGBuffer and rerun the forward on the actor network, getting the log probabilities which can be differentiated by the autograd functions of PyTorch. In particular, we set a loss = - 1/N sum(logp * TD_residuals_to_go) for the actor network, and the critic network by using a MSE loss between the output of the network and the discounted rewards-to-go.
