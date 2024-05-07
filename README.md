@@ -3,8 +3,12 @@ This repository contains the code of 4 tasks that my team (Emilio Palma, Simone 
 
 In every exercise you can find a README file with the description of the task and the solution.
 
-TOPICS
+
   Task 1: Regression with Gaussian Process
+  
   Task 2: Classification with Bayesian Neural Networks
+  
   Task 3: Bayesian Optimization
+  
   Task 4: Reinforcement Learning
+  
